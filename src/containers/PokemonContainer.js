@@ -39,14 +39,16 @@ class PokemonContainer extends React.Component{
 
 
     componentWillReceiveProps() {
-    let characterNumber = PokemonContainer.characterNumberGenerator(this.props);
-        fetch(`https://pokeapi.co/api/v2/pokemon/${characterNumber}`)
-            .then(response => response.json())
-            .then(data => this.setState({pokemon: data}))
-            .then(fetch(`https://pokeapi.co/api/v2/pokemon-form/${characterNumber}`)
+        let characterNumber = PokemonContainer.characterNumberGenerator(this.props);
+        if (this.props.birthday.month !== null) {
+            fetch(`https://pokeapi.co/api/v2/pokemon/${characterNumber}`)
                 .then(response => response.json())
-                .then(data => this.setState({pokemonImg: data.sprites.front_default})));
+                .then(data => this.setState({pokemon: data}))
+                .then(fetch(`https://pokeapi.co/api/v2/pokemon-form/${characterNumber}`)
+                    .then(response => response.json())
+                    .then(data => this.setState({pokemonImg: data.sprites.front_default})));
 
+        }
     }
 
     render() {

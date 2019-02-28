@@ -21,9 +21,9 @@ class DateContainer extends Component {
             "December"
         ];
         this.state = {
-            month: null,
-            day: null,
-            year: null,
+            month: 1,
+            day: 1,
+            year: 1950,
         };
 
         this.handleDatePost = this.handleDatePost.bind(this);
@@ -37,8 +37,8 @@ class DateContainer extends Component {
         this.setState({year:date.year})
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-    }
+    // componentWillReceiveProps(nextProps, nextContext) {
+    // }
 
 
     render(){
